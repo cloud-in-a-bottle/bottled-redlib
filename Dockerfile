@@ -15,11 +15,13 @@
 # preferences (theme, layout, NSFW filter, etc.) are kept as
 # URL query strings on the client.
 
-# Pin to a specific version tag rather than `latest` so a
-# redeploy can't silently pull a different upstream build.
-# Bump this line to upgrade.  v0.36.0 is current as of
-# packaging time (Apr 2026).
-FROM quay.io/redlib/redlib:v0.36.0
+# Pin to a specific upstream image rather than `latest` so a
+# redeploy can't silently pull a different build.  Bump this
+# line to upgrade.  quay.io/redlib/redlib does NOT publish
+# semantic version tags (only `latest` and per-commit
+# `sha-*`); the sha tag below is the redlib `main` build
+# from 2026-04-24, matching upstream release v0.36.0.
+FROM quay.io/redlib/redlib:sha-a4d36e9
 
 # Upstream EXPOSE'd 8080 and CMD'd "redlib"; we inherit both.
 #
