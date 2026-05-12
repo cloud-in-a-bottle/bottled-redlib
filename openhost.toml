@@ -1,0 +1,41 @@
+[app]
+name = "redlib"
+version = "0.1.0"
+description = "Redlib — privacy-respecting Reddit frontend (fork of Libreddit). Single Rust binary, no JS required, no Reddit account or API key needed. Browse subreddits, posts, and comments without Reddit's tracking. Reads via Reddit's public JSON endpoints."
+
+[runtime.container]
+# Container port 8080 is redlib's HTTP listener (its upstream
+# default).  No auth-proxy sidecar because the whole point of
+# this app is a publicly-viewable Reddit mirror.  The OpenHost
+# router passes anonymous traffic straight through when
+# public_paths = ["/"].
+image = "Dockerfile"
+port = 8080
+
+[routing]
+# Public.  Anyone with the URL can read Reddit content through
+# this app.  Flip to public_paths = [] for owner-only.
+public_paths = ["/"]
+# Redlib's /settings page is a static HTML form that responds
+# 200 without any backend work; the upstream Dockerfile uses
+# it as the healthcheck target.  Same here so the OpenHost
+# router's wait-for-ready probe latches as soon as the binary
+# binds 8080.
+health_check = "/settings"
+
+[resources]
+# Redlib at idle is ~10 MiB RSS (Rust binary, no DB, mostly
+# stateless).  Under load (many concurrent users browsing
+# different subreddits) it can climb to ~50 MiB because each
+# request triggers an outbound JSON fetch to Reddit + a
+# template render.  128 MiB is comfortable headroom.
+memory_mb = 128
+# IO-bound (outbound HTTPS to Reddit, template rendering).
+# 250m is plenty for a personal zone's traffic.
+cpu_millicores = 250
+
+[data]
+# No persistent state.  Redlib is stateless: user preferences
+# (theme, NSFW, layout) are stored as URL query strings on
+# the client, so there's nothing zone-side to persist.
+app_data = false
