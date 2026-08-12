@@ -1,8 +1,8 @@
-# openhost-redlib
+# bottled-redlib
 
 [Redlib](https://github.com/redlib-org/redlib) — privacy-respecting
 Reddit frontend (community-maintained Libreddit fork) — packaged as
-an OpenHost app. Browse Reddit content without JS, without an account,
+a Cloud in a Bottle app. Browse Reddit content without JS, without an account,
 without Reddit's tracking.
 
 ## What you get
