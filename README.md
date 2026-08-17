@@ -38,22 +38,6 @@ for user profiles.
   signed-in Reddit users; it can only read public content. If
   you need to post / vote / DM, this is the wrong tool.
 
-## Configuration
-
-Redlib reads environment variables for default theme, NSFW filter, etc. Full
-list at
-[redlib-org/redlib#configuration](https://github.com/redlib-org/redlib#configuration).
-
-To change or add settings, set them as `ENV` in the `Dockerfile` and redeploy,
-for example:
-
-    ENV REDLIB_DEFAULT_THEME=dark
-    ENV REDLIB_SFW_ONLY=off
-
-Configuration is baked into the image here because Cloud in a Bottle builds the
-app from this `Dockerfile` and does not pass `[runtime.container]` env vars from
-`openhost.toml` through to the container.
-
 ## License
 
 Redlib is licensed under the GNU Affero General Public License v3.0
