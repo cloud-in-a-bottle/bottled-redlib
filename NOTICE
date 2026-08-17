@@ -1,0 +1,60 @@
+bottled-redlib
+==============
+
+This repository packages Redlib for Cloud in a Bottle / OpenHost.
+
+Redlib
+------
+This image builds and distributes Redlib, an alternative private front-end
+to Reddit (originally a fork of Libreddit).
+
+  Upstream:   https://github.com/redlib-org/redlib
+  License:    GNU Affero General Public License v3.0 only (AGPL-3.0-only)
+  Built from: commit a4d36e954cf1bd64f209cd8868c5a29edc81b374 (release v0.36.0),
+              pinned in the Dockerfile via ARG REDLIB_COMMIT.
+
+Corresponding Source (AGPL-3.0 sections 6 and 13)
+-------------------------------------------------
+The complete, corresponding source of the Redlib version distributed by this
+image is the upstream repository at the pinned commit above:
+
+  https://github.com/redlib-org/redlib/tree/a4d36e954cf1bd64f209cd8868c5a29edc81b374
+
+Redlib's source is not modified by this package; configuration is applied only
+via environment variables and the container entrypoint. Redlib also links to
+its own source from its web UI, and that link must be preserved.
+
+Redlib originated as a fork of Libreddit
+(https://github.com/libreddit/libreddit), likewise licensed under AGPL-3.0.
+
+Licensing of this repository
+----------------------------
+Because the container image built here includes Redlib, the image as a whole
+is conveyed under the GNU Affero General Public License v3.0 (see LICENSE).
+
+The files original to this repository — the Dockerfile, openhost.toml, and
+documentation — are additionally made available under the MIT License below.
+MIT covers only those packaging files, not the bundled Redlib binary, which
+remains under AGPL-3.0.
+
+    MIT License
+
+    Copyright (c) 2026 the Cloud in a Bottle authors
+
+    Permission is hereby granted, free of charge, to any person obtaining a
+    copy of this software and associated documentation files (the "Software"),
+    to deal in the Software without restriction, including without limitation
+    the rights to use, copy, modify, merge, publish, distribute, sublicense,
+    and/or sell copies of the Software, and to permit persons to whom the
+    Software is furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+    DEALINGS IN THE SOFTWARE.

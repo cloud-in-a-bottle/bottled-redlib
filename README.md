@@ -57,3 +57,16 @@ Configuration is baked into the image here because Cloud in a Bottle builds the
 app from this `Dockerfile` and does not pass `[runtime.container]` env vars from
 `openhost.toml` through to the container.
 
+
+## License
+
+Redlib is licensed under the GNU Affero General Public License v3.0
+(AGPL-3.0-only). Because the image built from this repository includes Redlib,
+the image as a whole is distributed under the AGPL-3.0 — see `LICENSE`. The
+corresponding source is upstream `redlib-org/redlib` at the commit pinned in
+the `Dockerfile` (`ARG REDLIB_COMMIT`); details and attribution are in
+`NOTICE`.
+
+The packaging files original to this repository (the `Dockerfile`,
+`openhost.toml`, and docs) are additionally offered under the MIT License (see
+`NOTICE`).
