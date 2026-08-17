@@ -80,9 +80,9 @@ USER redlib
 EXPOSE 8080
 
 # Enable RSS feeds (/r/<sub>.rss, /user/<u>.rss, etc.).  Redlib only serves
-# RSS when REDLIB_ENABLE_RSS is set; when it is unset every .rss path returns
-# a 404 "RSS is disabled on this instance." page.  Baked into the image
-# because OpenHost's manifest has no [runtime.container].env passthrough.
+# RSS when REDLIB_ENABLE_RSS is set; otherwise those paths 404 with
+# "RSS is disabled on this instance."  Set as image ENV because the app is
+# built from this Dockerfile — see the README's Configuration section.
 ENV REDLIB_ENABLE_RSS=on
 
 CMD ["redlib"]
