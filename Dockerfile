@@ -40,13 +40,13 @@ RUN apt-get update \
 
 WORKDIR /build
 
-# Pin to a specific upstream commit so reproducible builds.
-# Bump this to track newer upstream changes.  a4d36e9 is the
-# 2026-04-24 commit (== upstream release v0.36.0).
-ARG REDLIB_COMMIT=a4d36e94f1e0b8d7c3c1cf3e3a9be2f3d3f3d3f3
+# Pin to a specific upstream commit for reproducible builds.
+# Bump this to track newer upstream changes.  This is the
+# 2026-04-24 commit a4d36e9 (== upstream release v0.36.0).
+ARG REDLIB_COMMIT=a4d36e954cf1bd64f209cd8868c5a29edc81b374
 RUN git clone https://github.com/redlib-org/redlib.git redlib \
  && cd redlib \
- && git checkout a4d36e9 \
+ && git checkout "$REDLIB_COMMIT" \
  && cargo build --release --locked --bin redlib
 
 ########################
@@ -78,5 +78,11 @@ USER redlib
 
 # Redlib binds 0.0.0.0:8080 by default.
 EXPOSE 8080
+
+# Enable RSS feeds (/r/<sub>.rss, /user/<u>.rss, etc.).  Redlib only serves
+# RSS when REDLIB_ENABLE_RSS is set; when it is unset every .rss path returns
+# a 404 "RSS is disabled on this instance." page.  Baked into the image
+# because OpenHost's manifest has no [runtime.container].env passthrough.
+ENV REDLIB_ENABLE_RSS=on
 
 CMD ["redlib"]
