@@ -31,8 +31,8 @@ health_check = "/settings"
 # template render.  128 MiB is comfortable headroom.
 memory_mb = 128
 # IO-bound (outbound HTTPS to Reddit, template rendering).
-# 250m is plenty for a personal zone's traffic.
-cpu_millicores = 250
+# 0.25 cores is plenty for a personal zone's traffic.
+cpu_cores = 0.25
 
 [data]
 # No persistent state.  Redlib is stateless: user preferences
