@@ -15,7 +15,7 @@ port = 8080
 [routing]
 # Public.  Anyone with the URL can read Reddit content through
 # this app.  Flip to public_paths = [] for owner-only.
-public_paths = ["/"]
+public_paths = []  # TEMP
 # Redlib's /settings page is a static HTML form that responds
 # 200 without any backend work; the upstream Dockerfile uses
 # it as the healthcheck target.  Same here so the OpenHost

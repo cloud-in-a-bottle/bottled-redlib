@@ -83,6 +83,6 @@ EXPOSE 8080
 # RSS when REDLIB_ENABLE_RSS is set; otherwise those paths 404 with
 # "RSS is disabled on this instance."  Set as image ENV because the app is
 # built from this Dockerfile — see the README's Configuration section.
-ENV REDLIB_ENABLE_RSS=on
+# TEMP: removed ENV REDLIB_ENABLE_RSS=on
 
 CMD ["redlib"]
