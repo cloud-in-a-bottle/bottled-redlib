@@ -2,7 +2,9 @@
 
 [Redlib](https://github.com/redlib-org/redlib) is a privacy-respecting
 Reddit frontend (community-maintained Libreddit fork), packaged as a Cloud in
-a Bottle app. Browse Reddit content without JS, without an account, without
+a Bottle app. This package runs [Nachtalb's fork](https://github.com/Nachtalb/redlib),
+which keeps working as Reddit changes; upstream Redlib currently fails on
+every page. Browse Reddit content without JS, without an account, without
 Reddit's tracking.
 
 ## What you get
@@ -23,17 +25,20 @@ for user profiles.
 
 ## Caveats
 
-- **Reddit rate-limits server IPs.** Redlib uses Reddit's public
-  JSON endpoints which Reddit aggressively throttles when traffic
-  doesn't look like a real browser. On a heavily-used zone you may
-  see "Reddit refused our request" errors during peak times. The
-  workaround upstream recommends: point Redlib at a Tor SOCKS proxy
-  via `REDLIB_HTTP_PROXY=socks5://...` so outbound calls rotate
-  through Tor exit nodes. Not wired up by default in this package.
+- **Reddit rate-limits and blocks server IPs.** Reddit throttles
+  traffic that doesn't look like a real browser, so on a heavily-used
+  zone you may see "Reddit refused our request" errors at peak times.
+  If Reddit blocks your server outright, the fork can send a logged-in
+  Reddit session (`REDLIB_REDDIT_COOKIE`, see its
+  [CONFIGURATION.md](https://github.com/Nachtalb/redlib/blob/main/CONFIGURATION.md#reddit-session)),
+  or route requests through a proxy such as Tor
+  (`REDLIB_HTTP_PROXY=socks5://...`). Neither is wired up by default
+  in this package.
 - **Reddit changes their public JSON occasionally.** Redlib usually
   patches within days, but a deploy of an old Redlib version can
-  start showing 500s for some pages after Reddit changes their
-  feed shape. Bump `REDLIB_COMMIT` in the Dockerfile to update.
+  start showing errors on every page after Reddit changes things.
+  To update, bump the pinned image tag and digest in the `Dockerfile`
+  (see the comment there) and the commit in `NOTICE`.
 - **No multi-user accounts.** Redlib doesn't have a notion of
   signed-in Reddit users; it can only read public content. If
   you need to post / vote / DM, this is the wrong tool.
@@ -43,10 +48,9 @@ for user profiles.
 Redlib is licensed under the GNU Affero General Public License v3.0
 (AGPL-3.0-only). Because the image built from this repository includes Redlib,
 the image as a whole is distributed under the AGPL-3.0; see `LICENSE`. The
-corresponding source is upstream `redlib-org/redlib` at the commit pinned in
-the `Dockerfile` (`ARG REDLIB_COMMIT`); details and attribution are in
-`NOTICE`.
+corresponding source is `Nachtalb/redlib` at the commit of the image pinned
+in the `Dockerfile`; details and attribution are in `NOTICE`.
 
 The packaging files original to this repository (the `Dockerfile`,
-`openhost.toml`, and docs) are additionally offered under the MIT License (see
+`cloudinabottle.toml`, and docs) are additionally offered under the MIT License (see
 `NOTICE`).
