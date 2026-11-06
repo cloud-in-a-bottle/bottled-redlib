@@ -43,6 +43,13 @@ for user profiles.
   signed-in Reddit users; it can only read public content. If
   you need to post / vote / DM, this is the wrong tool.
 
+## Prebuilt image
+
+`cloudinabottle.toml` sets `prebuilt_image`, so Cloud in a Bottle pulls our
+signed prebuilt image (built by CI from each release tag) instead of building
+the Dockerfile. To fork and modify this app, comment out `prebuilt_image` so
+your instance builds from source.
+
 ## License
 
 Redlib is licensed under the GNU Affero General Public License v3.0

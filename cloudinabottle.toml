@@ -1,6 +1,6 @@
 [app]
 name = "redlib"
-version = "0.2.0"
+version = "1.0.0"
 description = "Redlib — privacy-respecting Reddit frontend (Nachtalb's maintained fork). Single Rust binary, no JS required, no Reddit account or API key needed. Browse subreddits, posts, and comments without Reddit's tracking. Reads via Reddit's public JSON endpoints."
 
 [runtime.container]
@@ -10,6 +10,9 @@ description = "Redlib — privacy-respecting Reddit frontend (Nachtalb's maintai
 # router passes anonymous traffic straight through when
 # public_paths = ["/"].
 image = "Dockerfile"
+# Cloud in a Bottle pulls this signed prebuilt image (built from the release tag's commit by CI) instead of building
+# `image`. If you fork this app and change it, comment this line out so your instance builds `image` instead.
+prebuilt_image = "registry.cloudinabottle.org/bottled-redlib"
 port = 8080
 
 [routing]
