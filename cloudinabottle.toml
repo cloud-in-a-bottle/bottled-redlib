@@ -1,6 +1,6 @@
 [app]
 name = "redlib"
-version = "1.0.0"
+version = "1.1.0"
 description = "Redlib — privacy-respecting Reddit frontend (Nachtalb's maintained fork). Single Rust binary, no JS required, no Reddit account or API key needed. Browse subreddits, posts, and comments without Reddit's tracking. Reads via Reddit's public JSON endpoints."
 
 [runtime.container]

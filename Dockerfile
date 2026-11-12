@@ -20,7 +20,7 @@
 # https://github.com/Nachtalb/redlib/pkgs/container/redlib,
 # update the tag and the index digest below, and update the
 # commit in NOTICE.
-FROM ghcr.io/nachtalb/redlib:sha-809a793@sha256:374e4effb9d66d8d7909277dbc2cbafd621f4ba301838fef3474d3d46b36c8c9
+FROM ghcr.io/nachtalb/redlib:sha-150cb84@sha256:23b160325aa878ba25915bcecf0694beee79664474b21286101af45e3c0693d3
 
 # The image runs `redlib` as uid 65532 and binds 0.0.0.0:8080.
 # It has no shell or wget; the router probes /settings over HTTP.
