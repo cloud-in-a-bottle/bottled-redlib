@@ -11,16 +11,16 @@ This image distributes Redlib, an alternative private front-end to Reddit
   Fork:       https://github.com/Nachtalb/redlib
   Upstream:   https://github.com/redlib-org/redlib
   License:    GNU Affero General Public License v3.0 only (AGPL-3.0-only)
-  Image:      ghcr.io/nachtalb/redlib:sha-809a793, pinned by digest in the
+  Image:      ghcr.io/nachtalb/redlib:sha-150cb84, pinned by digest in the
               Dockerfile, built from commit
-              809a793e047f1ad611d528965b17b99c900403c7.
+              150cb84ae4a9542dd9354ef7a2a893335a942fcd.
 
 Corresponding Source (AGPL-3.0 sections 6 and 13)
 -------------------------------------------------
 The complete, corresponding source of the Redlib version distributed by this
 image is the fork's repository at the commit above:
 
-  https://github.com/Nachtalb/redlib/tree/809a793e047f1ad611d528965b17b99c900403c7
+  https://github.com/Nachtalb/redlib/tree/150cb84ae4a9542dd9354ef7a2a893335a942fcd
 
 Redlib's source is not modified by this package; configuration is applied only
 via environment variables and the container entrypoint. Redlib also links to
